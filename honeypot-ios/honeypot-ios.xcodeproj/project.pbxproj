@@ -17,7 +17,7 @@
 		93452A50236E6AF00082F5E7 /* HoneypotAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93452A4F236E6AF00082F5E7 /* HoneypotAPI.swift */; };
 		93452A52236E6B2C0082F5E7 /* HoneypotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93452A51236E6B2C0082F5E7 /* HoneypotError.swift */; };
 		93452A54236E72F60082F5E7 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93452A53236E72F60082F5E7 /* Response.swift */; };
-		93452A56236E77EC0082F5E7 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93452A55236E77EB0082F5E7 /* FeedTableViewCell.swift */; };
+		93452A56236E77EC0082F5E7 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93452A55236E77EB0082F5E7 /* FeedCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +34,7 @@
 		93452A4F236E6AF00082F5E7 /* HoneypotAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneypotAPI.swift; sourceTree = "<group>"; };
 		93452A51236E6B2C0082F5E7 /* HoneypotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoneypotError.swift; sourceTree = "<group>"; };
 		93452A53236E72F60082F5E7 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		93452A55236E77EB0082F5E7 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		93452A55236E77EB0082F5E7 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 				93452A4C236E6A8F0082F5E7 /* API */,
 				93452A4B236E691F0082F5E7 /* Supporting FIles */,
 				93452A3A236E680D0082F5E7 /* Main.storyboard */,
-				93452A55236E77EB0082F5E7 /* FeedTableViewCell.swift */,
+				93452A55236E77EB0082F5E7 /* FeedCollectionViewCell.swift */,
 				93452A49236E690D0082F5E7 /* FeedViewController.swift */,
 			);
 			path = "honeypot-ios";
@@ -173,7 +173,7 @@
 			files = (
 				93452A35236E680D0082F5E7 /* AppDelegate.swift in Sources */,
 				93452A4E236E6A9E0082F5E7 /* Message.swift in Sources */,
-				93452A56236E77EC0082F5E7 /* FeedTableViewCell.swift in Sources */,
+				93452A56236E77EC0082F5E7 /* FeedCollectionViewCell.swift in Sources */,
 				93452A52236E6B2C0082F5E7 /* HoneypotError.swift in Sources */,
 				93452A4A236E690D0082F5E7 /* FeedViewController.swift in Sources */,
 				93452A37236E680D0082F5E7 /* SceneDelegate.swift in Sources */,
