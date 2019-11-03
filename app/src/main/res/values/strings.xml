@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">honeypot</string>
     <string name="post">Post</string>
+    <string name="messagePrompt">Type your message here</string>
 </resources>
