@@ -1,17 +1,9 @@
 package com.example.hackduke_honeypot;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothSocket;
-import android.bluetooth.le.AdvertiseCallback;
+import android.bluetooth.BluetoothGatt;
 import android.bluetooth.le.AdvertiseData;
 import android.bluetooth.le.AdvertiseSettings;
 import android.bluetooth.le.BluetoothLeAdvertiser;
@@ -21,32 +13,24 @@ import android.bluetooth.le.ScanResult;
 import android.bluetooth.le.ScanSettings;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Typeface;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.ParcelUuid;
-import android.text.InputType;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.TypefaceSpan;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import java.util.UUID;
-
-import static android.widget.GridLayout.HORIZONTAL;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -79,9 +63,14 @@ public class MainActivity extends AppCompatActivity {
 
         //setTitle(s);
 
-        messages.add(new Message("1", "The police are attacking rioters", "1:00"));
-        messages.add(new Message("2", "Free Hong Kong", "2:00"));
-        messages.add(new Message("3", "Screw Blizzard", "3:00"));
+        messages.add(new Message("1", "Anyone else's electricity down?", "12:00AM"));
+        messages.add(new Message("2", "If someone knocks on your door, don't open it! Know your rights!", "12:22PM"));
+        messages.add(new Message("3", "Can we get some help by the marina?", "3:13PM"));
+        messages.add(new Message("4", "Is anyone else going to the protest tonight?", "1:25PM"));
+        messages.add(new Message("5", "Did anybody find a pair of keys by City Hall?", "7:47PM"));
+        messages.add(new Message("6", "Found my keys!", "9:50PM"));
+
+
 
         mRecyclerView = findViewById(R.id.my_recycler_view);
         //mRecyclerView.addItemDecoration(new DividerItemDecoration(this, HORIZONTAL));
@@ -91,7 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter = new MessageAdapter(messages);
         mRecyclerView.setAdapter(mAdapter);
-
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
@@ -134,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
         fabRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startBtService();
+
+
                 final BluetoothAdapter BTAdapter = BluetoothAdapter.getDefaultAdapter();
 //                Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
 //
@@ -166,33 +157,49 @@ public class MainActivity extends AppCompatActivity {
                 DataBuilder.setIncludeDeviceName(false);
 
 
-                BTLeAdvertiser.startAdvertising(SettingsBuilder.build(), DataBuilder.build(), new AdvertiseCallback() {
+//                BTLeAdvertiser.startAdvertising(SettingsBuilder.build(), DataBuilder.build(), new AdvertiseCallback() {
+//                    @Override
+//                    public void onStartSuccess(AdvertiseSettings settingsInEffect) {
+//                        super.onStartSuccess(settingsInEffect);
+//                        Log.d("demo", "started advertising");
+//                    }
+//
+//                    @Override
+//                    public void onStartFailure(int errorCode) {
+//                        super.onStartFailure(errorCode);
+//                        Log.d("demo", "failed to start advertising");
+//                    }
+//                });
+
+
+                ScanSettings.Builder scanBuilder = new ScanSettings.Builder();
+                scanBuilder.setScanMode(ScanSettings.SCAN_MODE_LOW_POWER);
+                scanBuilder.setMatchMode(ScanSettings.MATCH_MODE_AGGRESSIVE);
+                scanBuilder.setNumOfMatches(ScanSettings.MATCH_NUM_MAX_ADVERTISEMENT);
+                scanBuilder.setCallbackType(ScanSettings.CALLBACK_TYPE_ALL_MATCHES);
+
+
+                BTLeScanner.startScan(null /*filters*/, scanBuilder.build(), new ScanCallback() {
+
                     @Override
-                    public void onStartSuccess(AdvertiseSettings settingsInEffect) {
-                        super.onStartSuccess(settingsInEffect);
+                    public void onScanFailed(int errorCode) {
+                        super.onScanFailed(errorCode);
+                        Log.d("demo", "failed to start scanning: " + errorCode);
                     }
-                });
 
-
-                ScanSettings.Builder ScanBuilder = new ScanSettings.Builder();
-                ScanBuilder.setScanMode(ScanSettings.SCAN_MODE_LOW_POWER);
-                ScanBuilder.setMatchMode(ScanSettings.MATCH_MODE_AGGRESSIVE);
-                ScanBuilder.setNumOfMatches(ScanSettings.MATCH_NUM_MAX_ADVERTISEMENT);
-                ScanBuilder.setCallbackType(ScanSettings.CALLBACK_TYPE_ALL_MATCHES);
-
-
-                BTLeScanner.startScan(null /*filters*/, ScanBuilder.build(), new ScanCallback() {
                     @Override
                     public void onScanResult(int callbackType, ScanResult result) {
                         super.onScanResult(callbackType, result);
+                        Log.d("demo", result.toString());
                         if (result.getScanRecord() == null || result.getScanRecord().getServiceUuids() == null)
                             return;
-
+                        Log.d("demo", "" + result.getScanRecord().getServiceUuids().size());
                         for (ParcelUuid uuid : result.getScanRecord().getServiceUuids()) {
+                            Log.d("demo", uuid.toString());
                             if (!matchesServiceUuid(uuid.getUuid()))
                                 continue;
 
-                            //Log.d(TAG, "BLE scanner found supported device");
+                            Log.d("demo", "BLE scanner found supported device");
 
                             // Android uses randomly-generated MAC addresses in its broadcasts, and result.getDevice() uses that broadcast address.
                             // Unfortunately, the device that sent the broadcast can't listen using that MAC address.
@@ -200,6 +207,7 @@ public class MainActivity extends AppCompatActivity {
                             // Instead, we use the MAC address that was included in the service UUID.
                             String remoteDeviceMacAddress = macAddressFromLong(uuid.getUuid().getLeastSignificantBits());
                             BluetoothDevice remoteDevice = BTAdapter.getRemoteDevice(remoteDeviceMacAddress);
+                            Log.d("demo", remoteDeviceMacAddress);
 
                             // TODO: Interrupt this thread when the service is stopping
                             //new BluetoothClassicClient(remoteDevice, uuid.getUuid()).start();
@@ -210,6 +218,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void startBtService() {
+        BluetoothService.start(this, macBT);
+    }
 
 
     private static boolean matchesServiceUuid(UUID uuid) {

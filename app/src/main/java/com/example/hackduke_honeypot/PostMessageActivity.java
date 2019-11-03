@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import java.util.Calendar;
+
 public class PostMessageActivity extends AppCompatActivity {
     Button bCancel, bPost;
     EditText getMessageData;
@@ -38,7 +40,7 @@ public class PostMessageActivity extends AppCompatActivity {
         ivPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Message message = new Message("3", getMessageData.getText().toString(), "9");
+                Message message = new Message("3", getMessageData.getText().toString(), Calendar.getInstance().getTime().toString());
                 Intent intent = new Intent(PostMessageActivity.this, MainActivity.class);
                 intent.putExtra(MainActivity.MESSAGE_DATA, message);
                 setResult(MainActivity.REQ_CODE, intent);
