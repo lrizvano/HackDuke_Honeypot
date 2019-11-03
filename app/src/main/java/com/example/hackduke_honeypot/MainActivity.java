@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Honeypot");
+        setTitle("honeypot");
 
         messages.add(new Message("1", "1", "1"));
         messages.add(new Message("2", "2", "2"));

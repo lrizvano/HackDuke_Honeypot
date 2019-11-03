@@ -28,9 +28,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull MessageAdapter.ViewHolder holder, int position) {
         Message message = mData.get(position);
-        holder.tvMessageId.setText(message.messageId);
-        holder.tvMessageTime.setText(message.messageTime);
         holder.tvMessageData.setText(message.messageData);
+        holder.tvMessageTime.setText(message.messageTime);
     }
 
     @Override
@@ -39,13 +38,19 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvMessageId, tvMessageTime, tvMessageData;
+        TextView tvMessageTime, tvMessageData;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvMessageId = itemView.findViewById(R.id.tvMessageId);
-            tvMessageTime = itemView.findViewById(R.id.tvMessageTime);
             tvMessageData = itemView.findViewById(R.id.tvMessageData);
+            tvMessageTime = itemView.findViewById(R.id.tvMessageData);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
     }
 }

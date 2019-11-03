@@ -4,20 +4,20 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tvMessageId"
+        android:id="@+id/tvMessageData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/tvMessageTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="8dp"
+        android:paddingBottom="8dp"
         android:text="TextView" />
 
-    <TextView
-        android:id="@+id/tvMessageData"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 </LinearLayout>
