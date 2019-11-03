@@ -19,6 +19,7 @@ import android.text.style.TypefaceSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     FloatingActionButton fab;
     FloatingActionButton fab2;
-    String macBT;
+    private String m_Text = "";
 
 
     ArrayList<Message> messages = new ArrayList<>();
@@ -49,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle("honeypot");
-
 
 
         //SpannableString s = new SpannableString("honeypot");
@@ -80,36 +80,64 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         FloatingActionButton fabBT = findViewById(R.id.fabBT);
         fabBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle("Bluetooth Mac Address");
-                builder.setMessage("The hardware Bluetooth address is needed to send and receive messages over Bluetooth. Copy this from Android Settings -> System -> About Phone -> Status -> Bluetooth address.");
-                final EditText input = new EditText(MainActivity.this);
-                input.setInputType(InputType.TYPE_CLASS_TEXT);
-                builder.setView(new EditText(MainActivity.this));
+                final EditText txtUrl = new EditText(MainActivity.this);
 
-                // Set up the buttons
-                builder.setPositiveButton("Set", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        macBT = input.getText().toString();
-                    }
-                });
+            // Set the default text to a link of the Queen
+                txtUrl.setHint("00:11:22:33:FF:EE");
 
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                builder.show();
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("Bluetooth Mac Address")
+                        .setMessage("The hardware Bluetooth address is needed to send and receive messages over Bluetooth. Copy this from Android Settings -> System -> About Phone -> Status -> Bluetooth address.")
+                        .setView(txtUrl)
+                        .setPositiveButton("Set", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                String url = txtUrl.getText().toString();
+                                Log.d("demo", url);
+                            }
+                        })
+                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                            }
+                        })
+                        .show();
             }
         });
+
+
+
+//        FloatingActionButton fabBT = findViewById(R.id.fabBT);
+//        fabBT.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+//                builder.setTitle("Bluetooth Mac Address");
+//                builder.setMessage("The hardware Bluetooth address is needed to send and receive messages over Bluetooth. Copy this from Android Settings -> System -> About Phone -> Status -> Bluetooth address.");
+//                myinput = new EditText(MainActivity.this);
+//                myinput.setInputType(InputType.TYPE_CLASS_TEXT);
+//                builder.setView(myinput);
+//
+//
+//                // Set up the buttons
+//                builder.setPositiveButton("Set", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        macBT = myinput.getText().toString();
+//                    }
+//                });
+//
+//                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//                    }
+//                });
+//                builder.show();
+//            }
+//        });
 
 
     }
