@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="851-qH-cQL">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--honeypot-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="FeedViewController" customModule="honeypot_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="liF-LN-Rko">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EMH-4b-xS6">
+                                    <size key="itemSize" width="404" height="165"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="feedCell" id="YFb-Hs-e0M" customClass="FeedCollectionViewCell" customModule="honeypot_ios" customModuleProvider="target">
+                                        <rect key="frame" x="5" y="0.0" width="404" height="165"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="LH8-OL-sy9">
+                                            <rect key="frame" x="0.0" y="0.0" width="404" height="165"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="UDw-Vu-ccF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="404" height="165"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YgK-yc-NmW">
+                                                            <rect key="frame" x="0.0" y="0.0" width="72" height="48.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKx-ym-5Me">
+                                                            <rect key="frame" x="0.0" y="58.5" width="28" height="48"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ay-iw-Bd6">
+                                                            <rect key="frame" x="0.0" y="116.5" width="10.5" height="48.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                            <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UDw-Vu-ccF" firstAttribute="top" secondItem="LH8-OL-sy9" secondAttribute="top" id="D5O-af-5ia"/>
+                                                <constraint firstItem="UDw-Vu-ccF" firstAttribute="leading" secondItem="LH8-OL-sy9" secondAttribute="leading" id="bWx-ME-qwH"/>
+                                                <constraint firstAttribute="bottom" secondItem="UDw-Vu-ccF" secondAttribute="bottom" id="nmu-pq-3P9"/>
+                                                <constraint firstAttribute="trailing" secondItem="UDw-Vu-ccF" secondAttribute="trailing" id="xV2-LS-TSZ"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="404" height="165"/>
+                                        <connections>
+                                            <outlet property="lblId" destination="9ay-iw-Bd6" id="gQO-Z1-1nD"/>
+                                            <outlet property="lblMessage" destination="YgK-yc-NmW" id="vZp-la-RPZ"/>
+                                            <outlet property="lblTime" destination="mKx-ym-5Me" id="QMA-Pl-Tum"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Cp7-fh-u0o"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="IZV-U0-MfM"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="liF-LN-Rko" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3Yr-tD-ver"/>
+                            <constraint firstItem="liF-LN-Rko" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GXi-wg-Y2N"/>
+                            <constraint firstAttribute="bottom" secondItem="liF-LN-Rko" secondAttribute="bottom" id="aUo-pd-4L0"/>
+                            <constraint firstItem="liF-LN-Rko" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="d88-k4-aCR"/>
+                            <constraint firstAttribute="bottom" secondItem="liF-LN-Rko" secondAttribute="bottom" id="jM7-o9-wEF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="liF-LN-Rko" secondAttribute="trailing" id="jgq-Bt-dC3"/>
+                            <constraint firstItem="liF-LN-Rko" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tSF-OV-HwS"/>
+                            <constraint firstItem="liF-LN-Rko" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xNK-FK-kzp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="honeypot" id="vye-Wq-Bsd"/>
+                    <connections>
+                        <outlet property="collectionView" destination="liF-LN-Rko" id="Hhy-4P-fbU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xw8-Sx-5q0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="851-qH-cQL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yTK-xM-08M">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Y3D-qm-sIL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kuS-PP-1jV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+</document>
