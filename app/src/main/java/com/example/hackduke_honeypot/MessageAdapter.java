@@ -38,12 +38,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvMessageTime, tvMessageData;
+        TextView tvMessageData, tvMessageTime;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvMessageData = itemView.findViewById(R.id.tvMessageData);
-            tvMessageTime = itemView.findViewById(R.id.tvMessageData);
+            tvMessageTime = itemView.findViewById(R.id.tvMessageTime);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

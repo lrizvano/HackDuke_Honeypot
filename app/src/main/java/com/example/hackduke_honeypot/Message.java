@@ -4,18 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Message implements Parcelable {
-    String messageId, messageTime, messageData;
+    String messageId, messageData, messageTime;
 
-    public Message(String messageId, String messageTime, String messageData) {
+    public Message(String messageId, String messageData, String messageTime) {
         this.messageId = messageId;
-        this.messageTime = messageTime;
         this.messageData = messageData;
+        this.messageTime = messageTime;
     }
 
     protected Message(Parcel in) {
         messageId = in.readString();
-        messageTime = in.readString();
         messageData = in.readString();
+        messageTime = in.readString();
     }
 
     public static final Creator<Message> CREATOR = new Creator<Message>() {
@@ -38,7 +38,7 @@ public class Message implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(messageId);
-        parcel.writeString(messageTime);
         parcel.writeString(messageData);
+        parcel.writeString(messageTime);
     }
 }
