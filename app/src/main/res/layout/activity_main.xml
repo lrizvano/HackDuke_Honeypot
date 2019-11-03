@@ -27,6 +27,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
         android:tint="@color/colorBg"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_input_add" />
@@ -40,6 +41,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
         android:tint="@color/colorBg"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/stat_sys_data_bluetooth" />
@@ -52,6 +54,7 @@
         android:backgroundTint="@color/colorPrimary"
         android:clickable="true"
         android:tint="@color/colorBg"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/my_recycler_view"
         app:layout_constraintHorizontal_bias="0.5"

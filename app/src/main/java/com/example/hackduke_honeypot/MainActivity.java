@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity {
                             BluetoothDevice remoteDevice = BTAdapter.getRemoteDevice(remoteDeviceMacAddress);
 
                             // TODO: Interrupt this thread when the service is stopping
-                            new BluetoothClassicClient(remoteDevice, uuid.getUuid()).start();
+                            //new BluetoothClassicClient(remoteDevice, uuid.getUuid()).start();
                         }
                     }
                 });
