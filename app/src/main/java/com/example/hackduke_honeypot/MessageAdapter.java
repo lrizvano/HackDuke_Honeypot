@@ -44,13 +44,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
             super(itemView);
             tvMessageData = itemView.findViewById(R.id.tvMessageData);
             tvMessageTime = itemView.findViewById(R.id.tvMessageTime);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                }
-            });
         }
     }
 }
